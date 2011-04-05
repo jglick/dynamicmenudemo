@@ -20,6 +20,7 @@ public final class DelegatingFS extends MultiFileSystem implements LookupListene
 
     @SuppressWarnings("LeakingThisInConstructor")
     public DelegatingFS() {
+        setPropagateMasks(true);
         r.addLookupListener(this);
         resultChanged(null);
     }

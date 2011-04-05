@@ -20,5 +20,6 @@
                 <attr intvalue="0" name="position"/>
             </file>
         </folder>
+        <file name="Help_hidden"/>
     </folder>
 </filesystem>
