@@ -22,10 +22,10 @@ public final class SystemSubPathLayerProvider implements LayerProvider {
                 setPropagateMasks(true);
             }
             public @Override FileObject findResource(String name) {
-                return super.findResource(path + '/' + name);
+                return super.findResource(name.isEmpty() ? path : path + '/' + name);
             }
             protected @Override FileObject findResourceOn(FileSystem fs, String res) {
-                return super.findResourceOn(fs, path + '/' + res);
+                return super.findResourceOn(fs, res.isEmpty() ? path : path + '/' + res);
             }
             public @Override void addNotify() {}
             public @Override void removeNotify() {}
