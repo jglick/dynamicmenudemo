@@ -18,6 +18,9 @@ public final class SystemSubPathLayerProvider implements LayerProvider {
     
     public @Override FileSystem layer() throws Exception {
         return new MultiFileSystem(new FileSystem[] {FileUtil.getConfigRoot().getFileSystem()}) {
+            {
+                setPropagateMasks(true);
+            }
             public @Override FileObject findResource(String name) {
                 return super.findResource(path + '/' + name);
             }
@@ -26,6 +29,9 @@ public final class SystemSubPathLayerProvider implements LayerProvider {
             }
             public @Override void addNotify() {}
             public @Override void removeNotify() {}
+            @Override public String toString() {
+                return "SFS/" + path;
+            }
         };
     }
     

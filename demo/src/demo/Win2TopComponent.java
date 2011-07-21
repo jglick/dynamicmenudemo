@@ -1,6 +1,6 @@
 package demo;
 
-import api.FixedLayerProvider;
+import api.SystemSubPathLayerProvider;
 import java.util.Properties;
 import org.openide.windows.TopComponent;
 import org.netbeans.api.settings.ConvertAsProperties;
@@ -20,7 +20,7 @@ public final class Win2TopComponent extends TopComponent {
     public Win2TopComponent() throws SAXException {
         initComponents();
         setName("Win2");
-        associateLookup(Lookups.singleton(new FixedLayerProvider(Win1TopComponent.class.getResource("win2.xml"))));
+        associateLookup(Lookups.singleton(new SystemSubPathLayerProvider("win2")));
     }
 
     void writeProperties(Properties p) {}

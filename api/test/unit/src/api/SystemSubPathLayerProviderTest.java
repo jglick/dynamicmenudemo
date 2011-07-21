@@ -1,7 +1,9 @@
 package api;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 import javax.swing.Action;
 import junit.framework.TestCase;
 import org.openide.awt.ActionID;
@@ -23,10 +25,13 @@ public class SystemSubPathLayerProviderTest extends TestCase {
         assertNotNull(ref);
         final DataObject d = DataObject.find(ref);
         InstanceCookie ic = d.getLookup().lookup(InstanceCookie.class);
-        // XXX fails since DataShadow.deserialize tries to look in this FS for original and fails
-        assertNotNull(d.toString(), ic);
-        Action a = (Action) ic.instanceCreate();
-        a.actionPerformed(null);
+        assertNotNull(d.toString(), ic); // requires patch in DataShadow
+        final Action a = (Action) ic.instanceCreate();
+        EventQueue.invokeAndWait(new Runnable() {
+            @Override public void run() {
+                a.actionPerformed(null);
+            }
+        });
         assertEquals(1, cnt);
     }
     

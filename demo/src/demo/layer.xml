@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="win1">
+        <folder name="Menu">
+            <folder name="First">
+                <attr name="position" intvalue="2000"/>
+            </folder>
+            <file name="Help_hidden"/>
+        </folder>
+    </folder>
+    <folder name="win2">
+        <folder name="Menu">
+            <folder name="Second">
+                <attr name="position" intvalue="2000"/>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>
