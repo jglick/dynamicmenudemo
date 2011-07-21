@@ -6,7 +6,7 @@
             <folder name="First">
                 <attr name="position" intvalue="150"/>
             </folder>
-            <file name="Help_hidden"/>
+            <file name="Help.hidden"/>
         </folder>
     </folder>
     <folder name="win2">

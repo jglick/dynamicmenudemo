@@ -91,7 +91,7 @@ public final class SystemSubPathLayerProvider implements LayerProvider {
             FileObject[] kids = d.getChildren();
             String[] names = new String[kids.length];
             for (int i = 0; i < kids.length; i++) {
-                names[i] = kids[i].getNameExt();
+                names[i] = kids[i].getNameExt().replace(".hidden", "_hidden");
             }
             return names;
         }
@@ -99,7 +99,7 @@ public final class SystemSubPathLayerProvider implements LayerProvider {
         @Override public Object readAttribute(String name, String attrName) {
             FileObject d = delegate(name);
             return d != null ? d.getAttribute(attrName) : null;
-        }
+            }
 
         @Override public Enumeration<String> attributes(String name) {
             if (name.isEmpty()) {
