@@ -35,12 +35,7 @@ public final class DelegatingFS extends MultiFileSystem implements LookupListene
                 Logger.getLogger(DelegatingFS.class.getName()).log(Level.INFO, null, x);
             }
         }
-        System.err.println("XXX delegating to: " + fss);
         setDelegates(fss.toArray(new FileSystem[fss.size()]));
-        System.err.println("XXX contents: " + Collections.list(getRoot().getChildren(true)));
-        for (FileSystem fs : fss) {
-            System.err.println("  from " + fs + ": " + Collections.list(fs.getRoot().getChildren(true)));
-        }
     }
     
 }
