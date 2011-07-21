@@ -1,6 +1,7 @@
 package demo;
 
 import api.FixedLayerProvider;
+import java.util.Properties;
 import org.openide.windows.TopComponent;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
@@ -22,6 +23,10 @@ public final class Win1TopComponent extends TopComponent {
         setName("Win1");
         associateLookup(Lookups.singleton(new FixedLayerProvider(Win1TopComponent.class.getResource("win1.xml"))));
     }
+
+    void writeProperties(Properties p) {}
+
+    void readProperties(Properties p) {}
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -51,25 +56,5 @@ public final class Win1TopComponent extends TopComponent {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-    @Override
-    public void componentOpened() {
-        // TODO add custom code on component opening
-    }
 
-    @Override
-    public void componentClosed() {
-        // TODO add custom code on component closing
-    }
-
-    void writeProperties(java.util.Properties p) {
-        // better to version settings since initial version as advocated at
-        // http://wiki.apidesign.org/wiki/PropertyFiles
-        p.setProperty("version", "1.0");
-        // TODO store your settings
-    }
-
-    void readProperties(java.util.Properties p) {
-        String version = p.getProperty("version");
-        // TODO read your settings according to their version
-    }
 }
