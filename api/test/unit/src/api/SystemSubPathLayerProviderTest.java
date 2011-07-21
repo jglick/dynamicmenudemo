@@ -26,8 +26,11 @@ public class SystemSubPathLayerProviderTest extends TestCase {
         FileObject r = fs.getRoot();
         final FileObject ref = r.getFileObject("stuff/A.shadow");
         assertNotNull(ref);
+        assertEquals(Collections.singletonList("originalFile"), Collections.list(ref.getAttributes()));
         FileSystem mfs = new MultiFileSystem(new FileSystem[] {fs});
-        assertNotNull(mfs.findResource("stuff/A.shadow"));
+        FileObject ref2 = mfs.findResource("stuff/A.shadow");
+        assertNotNull(ref2);
+        assertEquals(Collections.singletonList("originalFile"), Collections.list(ref2.getAttributes()));
         final DataObject d = DataObject.find(ref);
         InstanceCookie ic = d.getLookup().lookup(InstanceCookie.class);
         assertNotNull(d.toString(), ic); // requires patch in DataShadow
