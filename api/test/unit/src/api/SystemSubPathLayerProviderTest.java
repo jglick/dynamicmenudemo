@@ -11,6 +11,8 @@ import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
 import org.openide.cookies.InstanceCookie;
 import org.openide.filesystems.FileObject;
+import org.openide.filesystems.FileSystem;
+import org.openide.filesystems.MultiFileSystem;
 import org.openide.loaders.DataObject;
 
 public class SystemSubPathLayerProviderTest extends TestCase {
@@ -20,9 +22,12 @@ public class SystemSubPathLayerProviderTest extends TestCase {
     }
     
     public void testProvider() throws Exception {
-        FileObject r = new SystemSubPathLayerProvider("sub1").layer().getRoot();
+        FileSystem fs = new SystemSubPathLayerProvider("sub1").layer();
+        FileObject r = fs.getRoot();
         final FileObject ref = r.getFileObject("stuff/A.shadow");
         assertNotNull(ref);
+        FileSystem mfs = new MultiFileSystem(new FileSystem[] {fs});
+        assertNotNull(mfs.findResource("stuff/A.shadow"));
         final DataObject d = DataObject.find(ref);
         InstanceCookie ic = d.getLookup().lookup(InstanceCookie.class);
         assertNotNull(d.toString(), ic); // requires patch in DataShadow
