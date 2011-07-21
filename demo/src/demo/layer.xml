@@ -4,7 +4,7 @@
     <folder name="win1">
         <folder name="Menu">
             <folder name="First">
-                <attr name="position" intvalue="2000"/>
+                <attr name="position" intvalue="150"/>
             </folder>
             <file name="Help_hidden"/>
         </folder>
@@ -12,7 +12,7 @@
     <folder name="win2">
         <folder name="Menu">
             <folder name="Second">
-                <attr name="position" intvalue="2000"/>
+                <attr name="position" intvalue="250"/>
             </folder>
         </folder>
     </folder>
