@@ -2,7 +2,6 @@ package impl;
 
 import api.LayerProvider;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +26,7 @@ public final class DelegatingFS extends MultiFileSystem implements LookupListene
     }
 
     public @Override void resultChanged(LookupEvent le) {
+        boolean touchedMenus = findResource("Menu") != null;
         List<FileSystem> fss = new ArrayList<FileSystem>();
         for (LayerProvider p : r.allInstances()) {
             try {
@@ -36,6 +36,9 @@ public final class DelegatingFS extends MultiFileSystem implements LookupListene
             }
         }
         setDelegates(fss.toArray(new FileSystem[fss.size()]));
+        if (touchedMenus || findResource("Menu") != null) {
+            ReheatMenus.launch();
+        }
     }
-    
+
 }
