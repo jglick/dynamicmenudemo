@@ -97,6 +97,9 @@ public final class SystemSubPathLayerProvider implements LayerProvider {
         }
 
         @Override public Object readAttribute(String name, String attrName) {
+            if (name.isEmpty()) {
+                return null; // otherwise a stack overflow
+            }
             FileObject d = delegate(name);
             return d != null ? d.getAttribute(attrName) : null;
             }
